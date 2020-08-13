@@ -2,14 +2,13 @@
 const date = $("#currentDay")
 let textArea = document.querySelectorAll("textarea");
 const now = moment().format("MMM Do YYYY");
-const clock = parseInt(moment().format('H'));
+const clock = +(moment().format('H'));
 
 //Today's date shown on top of screen
 date.text(now);
 // Checks time and colorizes the time boxes
 for(let i=0; i < textArea.length; i++){
-    let textArea = document.querySelectorAll("textarea");
-    let timeColor = parseInt(textArea[i].id)
+    let timeColor = +(textArea[i].id)
     if (timeColor < clock) {
         textArea[i].classList.add("past");
     }
@@ -62,6 +61,19 @@ $("#5pmBtn").on("click", function(){
     let fiveTask = $("#17").val();
     localStorage.setItem("5pm", fiveTask);
 })
+
+// Retrieval of local storage
+$("#8").text(localStorage.getItem("8am"));
+$("#9").text(localStorage.getItem("9am"));
+$("#10").text(localStorage.getItem("10am"));
+$("#11").text(localStorage.getItem("11am"));
+$("#12").text(localStorage.getItem("12pm"));
+$("#13").text(localStorage.getItem("1pm"));
+$("#14").text(localStorage.getItem("2pm"));
+$("#15").text(localStorage.getItem("3pm"));
+$("#16").text(localStorage.getItem("4pm"));
+$("#17").text(localStorage.getItem("5pm"));
+
 /*
 1. compare, (using if statements), the now value, to the IDs of each div. if it's less than the current time, add "past" class. if it's more than, add "future"
 
